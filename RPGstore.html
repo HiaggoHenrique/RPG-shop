@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stardust Store</title>
+    <style>
+     #products,
+     #cart{
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2% ;
+    display: flex;
+}
+ .product-single{
+    width:33.3%;
+    padding:0 20px;
+ }
+</style>
+
+</head>
+<body>
+    <div id="products"> <h2> Vitrine:</h2> 
+    </div><!-- produtos-->
+    
+
+<div id="cart">
+    <h2>cart:</h2>
+</div><!--carrinho-->
+
+<script>
+const items = [
+{
+    id: 0,
+    name: 'potion',
+    img:'file:///C:/Users/APELUDUUUU/Downloads/unknown%20(1).png',
+    amount: 0
+},    
+{
+    id: 1,
+    name: 'sword',
+    img:'file:///C:/Users/APELUDUUUU/Downloads/unknown%20(2).png',
+    amount: 0
+},    
+{
+    id: 2,
+    name: 'wizard hat',
+    img:'C:\Users\APELUDUUUU\Downloads\programação real\Sprite-0001.png',
+    amount: 0
+},    
+]
+
+inicializarloja = () => {
+    var products = document.getElementById('products')
+items.map((val)=>{
+    products.innerHTML+=`
+     <div class="Product-single"> 
+        <img src="'+val.img+'" />
+         <p>`+val.nome+`</p> 
+         <a key="`+val.id+`"href=#>Add to cart!<a/>
+        </div>
+
+       `
+    ;
+})
+
+}
+inicializarloja();  
+ var containercart = document.getElementById('cart')
+items.map((val)=>{
+    if(val.length > 0)
+    containercart.innerHTML+=`
+     
+    <p> `+val.nome+` | length:`+val.length+` </p>
+    <hr>
+    
+    
+    
+    
+    `})
+
+atualizarCarrinho = () => {
+console.log(items);
+}
+var links = document.getElementsByTagName('a');
+for(var i = 0; i <links.length; i++){
+    links[i].addEventListener("click",function(){
+   let key = this.getAttribute('key');
+  items[key].amount++;
+   atualizarCarrinho();
+ return false;
+
+    })
+}
+
+</script>
+</body>
+</html>
